@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <%@ include file="/WEB-INF/views/common/header.jspf" %>
 <%
 // ContextPath가 "/"이 아니라 "/board"일 경우
@@ -26,6 +27,5 @@ if(user == null){
 <%
 }
 %>
-
 </body>
 </html>
