@@ -28,12 +28,11 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(1, user.get("uiId"));
 			ps.setString(2, user.get("uiPwd"));
 			rs = ps.executeQuery();
-//			System.out.println(rs);
-			
+			System.out.println(user);
 			// true일 경우에만 실행됨
 			if(rs.next()) {
-				user.put("uiNum", rs.getString("ui_num"));
-				user.put("credat", rs.getString("credat"));
+				user.put("uiId", rs.getString("ui_id"));
+				user.put("uiPwd", rs.getString("ui_pwd"));
 				return user;
 			}		
 		} catch (SQLException e) {
@@ -63,10 +62,9 @@ public class UserDAOImpl implements UserDAO {
 			System.out.println(rs);
 			
 			if(rs.next()) {
-				user.put("uiNum", rs.getString("ui_name"));
+				user.put("uiName", rs.getString("ui_name"));
 				user.put("uiId", rs.getString("ui_id"));
 				user.put("uiPwd", rs.getString("ui_pwd"));
-				System.out.println(rs);
 				System.out.println(user);
 				return user;
 			}
