@@ -25,8 +25,8 @@ public class BoardController extends HttpServlet {
 		String cmd = request.getRequestURI().substring(7);
 		Map<String, String> board = new HashMap<>();
 		
-		if("list".contentEquals(cmd)) {
-			List<Map<String, String>> list = new ArrayList<>();
+		if("list".equals(cmd)) {
+			List<Map<String, String>> list = bs.getBoardList(board);
 			request.setAttribute("list", list);
 		}
 		String path = "/views/board/list";
@@ -40,7 +40,7 @@ public class BoardController extends HttpServlet {
 		Map<String, String> board = new HashMap<>();
 		String path = "/views/msg";
 		
-		if("insert".contentEquals(cmd)) {
+		if("insert".equals(cmd)) {
 			board.put("biTitle", request.getParameter("bi_title"));
 			board.put("biContent", request.getParameter("bi_content"));
 			
@@ -50,7 +50,7 @@ public class BoardController extends HttpServlet {
 			
 			Map<String, String> rMap = bs.insertBoard(board);
 			request.setAttribute("msg", rMap.get("msg"));
-			request.setAttribute("msg", rMap.get("url"));
+			request.setAttribute("url", rMap.get("url"));
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);

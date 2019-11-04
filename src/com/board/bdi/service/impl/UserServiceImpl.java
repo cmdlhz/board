@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 		user.put("uiName", uiName);
 		user.put("uiId", uiId);
 		user.put("uiPwd", uiPwd);
-		System.out.println(user); // 잘 입력됨
+		System.out.println("user : " + user); // 잘 입력됨
 		return user = udao.registerUser(user);
 	}
 }

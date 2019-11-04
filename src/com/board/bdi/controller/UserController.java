@@ -33,7 +33,7 @@ public class UserController extends HttpServlet {
 		String cmd = uri.substring(7);
 		String path = "/views/msg";
 		
-		if("login".contentEquals(cmd)) {
+		if("login".equals(cmd)) {
 			Map<String, String> user = us.doLogin(uiId, uiPwd);
 //			System.out.println(user);
 			// null이 아니면 입력이 됐다는 얘기

@@ -28,7 +28,6 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(1, user.get("uiId"));
 			ps.setString(2, user.get("uiPwd"));
 			rs = ps.executeQuery();
-			System.out.println(user);
 			// true일 경우에만 실행됨
 			if(rs.next()) {
 				user.put("uiId", rs.getString("ui_id"));
@@ -53,21 +52,13 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			con = DriverManager.getConnection(URL, ID, PWD);
 			String sql = "insert into user_info(ui_num, ui_name, ui_id, ui_pwd, credat, cretim, moddat, modtim, active) ";
-			sql+= "values(seq_ui_num.nextval, ?, ?, ?, TO_CHAR(SYSDATE, 'YYYYMMDD'), TO_CHAR(SYSDATE, 'HH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDD'), TO_CHAR(SYSDATE, 'HH24MISS'), '1')";
+			sql += "values(seq_ui_num.nextval, ?, ?, ?, TO_CHAR(SYSDATE, 'YYYYMMDD'), TO_CHAR(SYSDATE, 'HH24MISS'), TO_CHAR(SYSDATE, 'YYYYMMDD'), TO_CHAR(SYSDATE, 'HH24MISS'), '1')";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, user.get("uiName"));
 			ps.setString(2, user.get("uiId"));
 			ps.setString(3, user.get("uiPwd"));
-			rs = ps.executeQuery();
-			System.out.println(user);
-			
-			if(rs.next()) {
-				user.put("uiName", rs.getString("ui_name"));
-				user.put("uiId", rs.getString("ui_id"));
-				user.put("uiPwd", rs.getString("ui_pwd"));
-				System.out.println(user);
-				return user;
-			}
+			int result = ps.executeUpdate();
+			if(result == 1) return user;
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -82,12 +73,12 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 	}
 	
-	public static void main(String[] args) {
-		UserDAO udao = new UserDAOImpl();
-		Map<String, String> user = new HashMap<>();
-		user.put("uiId", "mkkim");
-		user.put("uiPwd", "12345");
-		user = udao.selectUser(user);
-		System.out.println(user);
-	}
+//	public static void main(String[] args) {
+//		UserDAO udao = new UserDAOImpl();
+//		Map<String, String> user = new HashMap<>();
+//		user.put("uiId", "mkkim");
+//		user.put("uiPwd", "12345");
+//		user = udao.selectUser(user);
+//		System.out.println(user);
+//	}
 }
