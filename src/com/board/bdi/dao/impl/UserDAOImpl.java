@@ -59,7 +59,7 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(2, user.get("uiId"));
 			ps.setString(3, user.get("uiPwd"));
 			rs = ps.executeQuery();
-			System.out.println(rs);
+			System.out.println(user);
 			
 			if(rs.next()) {
 				user.put("uiName", rs.getString("ui_name"));

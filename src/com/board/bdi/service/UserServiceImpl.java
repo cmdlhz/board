@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
 	public Map<String, String> doSignup(String uiName, String uiId, String uiPwd){
 		Map<String, String> user = new HashMap<>();
 		System.out.println(user); // {}
-
 		user.put("uiName", uiName);
 		user.put("uiId", uiId);
 		user.put("uiPwd", uiPwd);
