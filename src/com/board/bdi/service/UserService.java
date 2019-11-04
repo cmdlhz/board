@@ -6,3 +6,7 @@ public interface UserService {
 	public Map<String, String> doLogin(String uiId, String uiPwd);
 	public Map<String, String> doSignup(String uiName, String uiId, String uiPwd);
 }
+
+/*
+ * 여기서 login request를 처리해줘도 됨 => 그럼 controller가 compact해짐
+ */

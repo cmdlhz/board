@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.board.bdi.service.UserService;
-import com.board.bdi.service.UserServiceImpl;
+import com.board.bdi.service.impl.UserServiceImpl;
 
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

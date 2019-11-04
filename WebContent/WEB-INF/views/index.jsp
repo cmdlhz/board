@@ -16,14 +16,14 @@ String rPath = request.getContextPath();
 <%
 if(user == null){
 %>
-	<b>Please log in or sign up :)</b>
+	<b>Please log in or sign up :)</b><br><br>
 	<a href="<%=rPath%>/views/user/login"><button>LOG IN</button></a>
 	<a href="<%=rPath%>/views/user/signup"><button>SIGN UP</button></a>
 <% 
 } else {
 %>
-	<b>Please choose one of the following: </b>
-	<a href="<%=rPath%>/views/board/list"><button>게시판 가기!</button></a><br><br>
+	<b>Please choose one of the following: </b><br><br>
+	<a href="<%=rPath%>/views/board/list"><button>게시판 가기!</button></a><br>
 	<a href="<%=rPath%>/views/user/logout"><button>LOGOUT</button></a>
 <%
 }

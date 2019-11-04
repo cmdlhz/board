@@ -1,10 +1,11 @@
-package com.board.bdi.service;
+package com.board.bdi.service.impl;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import com.board.bdi.dao.UserDAO;
 import com.board.bdi.dao.impl.UserDAOImpl;
+import com.board.bdi.service.UserService;
 
 public class UserServiceImpl implements UserService {
 	private UserDAO udao = new UserDAOImpl();

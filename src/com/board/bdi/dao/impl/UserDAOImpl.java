@@ -34,7 +34,7 @@ public class UserDAOImpl implements UserDAO {
 				user.put("uiId", rs.getString("ui_id"));
 				user.put("uiPwd", rs.getString("ui_pwd"));
 				return user;
-			}		
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
