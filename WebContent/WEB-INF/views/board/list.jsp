@@ -5,6 +5,7 @@
 
 <%
 String rPath = request.getContextPath();
+List<Map<String, String>> list = (List<Map<String, String>>)request.getAttribute("list");
 %>
 <!DOCTYPE HTML>
 <html>
@@ -21,38 +22,42 @@ if(user == null){
 	<a href="<%=rPath%>/views/user/signup"><button>SIGN UP</button></a>
 <%
 } else {
-%>
-<b>The list of your articles : </b><br><br>
-<form>
+	%>
+	<b>The list of your articles : </b><br><br>
 	<table border="1">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
 			<th>작성자</th>
-			<th>작성일자</th>
+			<th>작성 일자</th>
+			<th>게시 시간</th>
 		</tr>
 	<%
-	if(request.getAttribute("boardList") == null){
-		out.println("<tr><td colspan=\"4\">There is no posting.</td></tr>");
+	if(list == null || list.size() == 0){
+		out.println("<tr align='center'><td colspan=\"5\">There is no posting !!!</td></tr>");
 	} else {
-		List<Map<String, String>> boardList = (List<Map<String, String>>)request.getAttribute("boardList");
-		for(Map<String, String> board:boardList){
+		for(Map<String, String> board:list){
 	%>
 		<tr>
 			<td><%= board.get("biNum") %></td>
 			<td><%= board.get("biTitle") %></td>
-			<td><%= board.get("uiNum") %></td>
+			<td><%= board.get("uiId") %></td>
 			<td><%= board.get("credat") %></td>
+			<td><%= board.get("cretim") %></td>
 		</tr>
 	<%
 		}
 	}
 	%>
 	</table>
-</form>
-<%
+	<br><button onclick="goPage('/views/board/insert')">*** 글쓰기 ***</button><br>
+	<%
 }
 %>
-<br><a href="/views/board/insert">*** 글쓰기 ***</a><br>
+<script>
+function goPage(url){
+	 location.href = url;
+}
+</script>
 </body>
 </html>

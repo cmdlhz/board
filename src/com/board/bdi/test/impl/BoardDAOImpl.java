@@ -30,6 +30,7 @@ public class BoardDAOImpl implements BoardDAO {
 			ps.setString(1, board.get("biTitle"));
 			ps.setString(2, board.get("biContent"));
 			ps.setString(3, board.get("uiNum"));
+			System.out.println(board);
 			return ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -43,19 +44,19 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		return 0;
 	}
-	public static void main(String[] args) {
-		// BoardDAO, BoardDAOImpl, Object
-		// Interface를 쓰면 BoardDAO로 써줘야 함
-		BoardDAO bdao = new BoardDAOImpl();
-		Map<String, String> board = new HashMap<>();
-		board.put("biTitle", "test title");
-		board.put("biContent", "test content");
-		board.put("uiNum", "47");
-		int result = bdao.insertBoard(board);
-		if(result == 1) {
-			System.out.println("Completed!");
-		} else {
-			System.out.println("Not Saved!");
-		}
-	}
+//	public static void main(String[] args) {
+//		// BoardDAO, BoardDAOImpl, Object
+//		// Interface를 쓰면 BoardDAO로 써줘야 함
+//		BoardDAO bdao = new BoardDAOImpl();
+//		Map<String, String> board = new HashMap<>();
+//		board.put("biTitle", "test title");
+//		board.put("biContent", "test content");
+//		board.put("uiNum", "47");
+//		int result = bdao.insertBoard(board);
+//		if(result == 1) {
+//			System.out.println("Completed!");
+//		} else {
+//			System.out.println("Not Saved!");
+//		}
+//	}
 }

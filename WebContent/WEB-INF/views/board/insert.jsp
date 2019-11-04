@@ -25,21 +25,21 @@ if(user == null){
 <form method="POST" action="/board/insert">
 	<table border="1">
 		<tr>
-			<td align="center"><b>First Name</b></td>
+			<td align="center"><b>제목</b></td>
 			<!-- name => key로 받아감 -->
-			<td><input type="text" name="uiName" id="uiName"></td>
+			<td><input type="text" name="bi_title"></td>
 		</tr>
 		<tr>
-			<td align="center"><b>ID</b></td>
+			<td align="center"><b>작성자</b></td>
 			<!-- name => key로 받아감 -->
-			<td><input type="text" name="uiId" id="uiId"></td>
+			<td><%= user.get("uiId") %></td>
 		</tr>
 		<tr>
-			<td align="center"><b>Password</b></td>
-			<td><input type="password" name="uiPwd" id="uiPwd"></td>
+			<td align="center"><b>내용</b></td>
+			<td><textarea name="bi_content"></textarea></td>
 		</tr>
 		<tr>
-			<th colspan="2"><button>SIGN UP</button></th>
+			<th colspan="2"><button>글쓰기</button></th>
 		</tr>
 	</table>
 </form>
