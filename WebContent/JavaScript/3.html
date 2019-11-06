@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>JS 3</title>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+var arr = [];
+
+for(var i = 0; i<10; i++){
+	if(i % 2 != 0){
+		arr.push(i);
+	} 
+}
+console.log(arr);
+
+// arr.forEach((e) => console.log(e));
+
+var str = '';
+for(var i=1; i<=9; i++){
+	for(var j=1; j<=9; j++){
+// 		str += i + " X " + j + " = " + (i*j) + "<br>";
+		str += `${i} X ${j} = ${i*j}, `;
+	}
+	str += "<br>";
+}
+document.getElementById("div1").innerHTML = str;
+
+</script>
+</body>
+</html>

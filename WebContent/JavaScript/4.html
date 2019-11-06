@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>JS 4</title>
+</head>
+<body>
+<input type="number" id="a">
+<input type="number" id="b">
+<div id="div1"></div>
+<button onclick="changeDiv()">계산</button>
+<script>
+	function changeDiv(){
+		var a = document.getElementById('a').value;
+		var b = document.getElementById('b').value;
+	 			
+		console.log("A : " + a);
+		console.log("B : " + b);
+		
+		var str = '';
+		for(var i=1; i<=a; i++){
+			for(var j=1; j<=b; j++){
+				if(b == j){
+					str += `${i} X ${j} = ${i*j} `;
+				} else {
+					str += `${i} X ${j} = ${i*j}, `;
+				}
+			}
+			str += "<br>";
+		}
+		document.getElementById("div1").innerHTML = str;
+	}
+</script>
+</body>
+</html>

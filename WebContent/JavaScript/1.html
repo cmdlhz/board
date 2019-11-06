@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>JS 1</title>
+</head>
+<body>
+<div id="div1"></div>
+<!-- <button onclick="changeDiv()">Edit</button>	 -->
+
+<script>
+	function changeDiv(){
+		var divObj = document.getElementById("div1");
+		divObj.innerHTML = "I'm edited!";
+	}
+	
+	// changeDiv(); = window.changeDiv();
+	// changeDiv();
+	
+	var test = 'abc';
+	test = changeDiv;
+	test();
+	
+	var a = 1;
+	var str = '1';
+	// 자바의 ==을 잊어라! 자바스크립트에서는 값이 같은지만 비교함!
+// 	alert(a == str); // true
+// 	alert(a === str); // false
+
+// 	alert(a != str); // false
+// 	alert(a !== str); // true
+</script>
+</body>
+</html>
