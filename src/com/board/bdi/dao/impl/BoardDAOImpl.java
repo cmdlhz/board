@@ -42,6 +42,8 @@ public class BoardDAOImpl implements BoardDAO {
 				b.put("uiId", rs.getString("ui_id"));
 				b.put("credat", rs.getString("credat"));
 				b.put("cretim", rs.getString("cretim"));
+				b.put("moddat", rs.getString("moddat"));
+				b.put("modtim", rs.getString("modtim"));
 				list.add(b);
 			}
 			return list;
@@ -61,6 +63,41 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public Map<String, String> selectBoard(Map<String, String> board) {
+		try {
+			con = DriverManager.getConnection(URL, ID, PWD);
+			String sql = "select * from board_info bi, user_info ui ";
+			sql += " where bi.ui_num = ui.ui_num ";
+			sql += " and bi_num=?";
+			
+			ps = con.prepareStatement(sql);
+			ps.setString(1, board.get("biNum"));
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Map<String, String> b = new HashMap<>();
+				b.put("biNum", rs.getString("bi_num"));
+				b.put("biTitle", rs.getString("bi_title"));
+				b.put("biContent", rs.getString("bi_content"));
+				b.put("uiNum", rs.getString("ui_num"));
+				b.put("uiName", rs.getString("ui_name"));
+				b.put("uiId", rs.getString("ui_id"));
+				b.put("credat", rs.getString("credat"));
+				b.put("cretim", rs.getString("cretim"));
+				b.put("moddat", rs.getString("moddat"));
+				b.put("modtim", rs.getString("modtim"));
+				return b;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(con != null) con.close();
+			} catch(SQLException sqle) {
+				sqle.printStackTrace();
+			}
+		}
 		return null;
 	}
 
@@ -91,14 +128,48 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public int deleteBoard(Map<String, String> board) {
-		// TODO Auto-generated method stub
+		try {
+			con = DriverManager.getConnection(URL, ID, PWD);
+			String sql = "delete from board_info where bi_num = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, board.get("biNum"));
+			return ps.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(con != null) con.close();
+			} catch(SQLException sqle) {
+				sqle.printStackTrace();
+			}
+		}
 		return 0;
 	}
 
 	@Override
 	public int updateBoard(Map<String, String> board) {
-		// TODO Auto-generated method stub
+		try {
+			con = DriverManager.getConnection(URL, ID, PWD);
+			String sql = "update board_info set bi_title =?, bi_content =? ";
+			sql += " where bi_num = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, board.get("biTitle"));
+			ps.setString(2, board.get("biContent"));
+			ps.setString(3, board.get("biNum"));
+			return ps.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(con != null) con.close();
+			} catch(SQLException sqle) {
+				sqle.printStackTrace();
+			}
+		}
 		return 0;
 	}
-
 }

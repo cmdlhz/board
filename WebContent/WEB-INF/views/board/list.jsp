@@ -31,27 +31,29 @@ if(user == null){
 			<th>작성자</th>
 			<th>작성 일자</th>
 			<th>게시 시간</th>
+			<th>수정 일자</th>
+			<th>수정 시간</th>
 		</tr>
-	<%
-	if(list == null || list.size() == 0){
-		out.println("<tr align='center'><td colspan=\"5\">There is no posting !!!</td></tr>");
-	} else {
-		for(Map<String, String> board:list){
-	%>
+	<c:if test="${empty list}">
 		<tr>
-			<td><%= board.get("biNum") %></td>
-			<td><%= board.get("biTitle") %></td>
-			<td><%= board.get("uiId") %></td>
-			<td><%= board.get("credat") %></td>
-			<td><%= board.get("cretim") %></td>
+			<td colspan="5">게시물이 없습니다.</td>
 		</tr>
-	<%
-		}
-	}
-	%>
+	</c:if>
+	<c:forEach var="board" items="${list}">
+		<tr>
+			<td>${board.biNum}</td>
+			<td><a href="/board/view?biNum=${board.biNum}">${board.biTitle}</a></td>
+			<td>${board.uiId}</td>
+			<td>${board.credat}</td>
+			<td>${board.cretim}</td>
+			<td>${board.moddat}</td>
+			<td>${board.modtim}</td>
+		</tr>
+	</c:forEach>
 	</table>
 	<br><button onclick="goPage('/views/board/insert')">*** 글쓰기 ***</button><br>
-	<%
+	<br><button onclick="goPage('/views/index')">*** index page로 가기 ***</button><br>
+<%
 }
 %>
 <script>

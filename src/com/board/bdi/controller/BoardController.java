@@ -24,12 +24,28 @@ public class BoardController extends HttpServlet {
 		System.out.println("This must get passed!");
 		String cmd = request.getRequestURI().substring(7);
 		Map<String, String> board = new HashMap<>();
+		String path = "/views/board/list";
 		
 		if("list".equals(cmd)) {
 			List<Map<String, String>> list = bs.getBoardList(board);
 			request.setAttribute("list", list);
-		}
-		String path = "/views/board/list";
+		} else if("view".equals(cmd)) {
+			path = "/views/board/view";
+			board.put("biNum", request.getParameter("biNum"));
+			board = bs.getBoard(board);
+			request.setAttribute("board", board);
+		} else if("update".equals(cmd)) {
+			path = "/views/board/update";
+			board.put("biNum", request.getParameter("biNum"));
+			board = bs.getBoard(board);
+			request.setAttribute("board", board);
+		} else if("delete".equals(cmd)) {
+			path = "/views/msg";
+			board.put("biNum", request.getParameter("biNum"));
+			Map<String, String> rMap = bs.deleteBoard(board);
+			request.setAttribute("msg", rMap.get("msg"));
+			request.setAttribute("url", rMap.get("url"));
+		} 
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
 	}
@@ -49,6 +65,15 @@ public class BoardController extends HttpServlet {
 			board.put("uiNum", user.get("uiNum"));
 			
 			Map<String, String> rMap = bs.insertBoard(board);
+			request.setAttribute("msg", rMap.get("msg"));
+			request.setAttribute("url", rMap.get("url"));
+			
+		} else if("update".contentEquals(cmd)) {
+			board.put("biTitle", request.getParameter("bi_title"));
+			board.put("biContent", request.getParameter("bi_content"));
+			board.put("biNum", request.getParameter("biNum"));
+			
+			Map<String, String> rMap = bs.updateBoard(board);
 			request.setAttribute("msg", rMap.get("msg"));
 			request.setAttribute("url", rMap.get("url"));
 		}

@@ -1,6 +1,7 @@
 package com.board.bdi.service.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.board.bdi.dao.UserDAO;
@@ -16,7 +17,7 @@ public class UserServiceImpl implements UserService {
 		// 2nd parameter에 argument를 집어 넣음
 		user.put("uiId", uiId);
 		user.put("uiPwd", uiPwd);
-		return user = udao.selectUser(user);
+		return user = udao.loginUser(user);
 	}
 	
 	@Override
@@ -28,5 +29,10 @@ public class UserServiceImpl implements UserService {
 		user.put("uiPwd", uiPwd);
 		System.out.println("user : " + user); // 잘 입력됨
 		return user = udao.registerUser(user);
+	}
+	
+	@Override
+	public List<Map<String, String>> getUsers(Map<String, String> user){
+		return udao.selectUsers(user);
 	}
 }

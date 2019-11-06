@@ -20,11 +20,12 @@ if(user == null){
 	<a href="<%=rPath%>/views/user/login"><button>LOG IN</button></a>
 	<a href="<%=rPath%>/views/user/signup"><button>SIGN UP</button></a>
 <% 
-} else {
+} else { 
 %>
-	<b>Please choose one of the following: </b><br><br>
-	<a href="<%=rPath%>/views/board/list"><button>게시판 가기!</button></a><br>
-	<a href="<%=rPath%>/views/user/logout"><button>LOGOUT</button></a>
+	<b><%= user.get("uiNum") %></b>, <b><%= user.get("uiId") %></b>, <i>please choose one of the following: </i><br><br>
+	<a href="<%=rPath%>/board/list"><button>게시판 가기!</button></a><br>
+	<a href="<%=rPath%>/users/logout"><button>LOGOUT</button></a><br>
+	<a href="<%=rPath%>/users/list"><button>회원 목록</button></a>
 <%
 }
 %>

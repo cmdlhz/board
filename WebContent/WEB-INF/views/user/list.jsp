@@ -9,6 +9,12 @@
 <title>USER LIST</title>
 </head>
 <body>
+<form action="/users/list">
+	번호 : <input type="text" name="uiNum"><br>
+	ID : <input type="text" name="uiId"><br>
+	이름 : <input type="text" name="uiName"><br>
+	<button>검색</button>
+</form><br><br>
 <table border="1">
 	<tr>
 		<th>User #</th>

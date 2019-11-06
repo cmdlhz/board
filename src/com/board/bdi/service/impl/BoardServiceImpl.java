@@ -18,7 +18,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Map<String, String> getBoard(Map<String, String> board) {
-		return null;
+		return bdao.selectBoard(board);
 	}
 
 	@Override
@@ -38,12 +38,32 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Map<String, String> updateBoard(Map<String, String> board) {
-		return null;
+		Map<String, String> rMap = new HashMap<>();
+		int result = bdao.updateBoard(board);
+		
+		if(result == 1) {
+			rMap.put("msg", "업데이트 Success!");
+			rMap.put("url", "/board/view?biNum=" + board.get("biNum"));
+		} else {
+			rMap.put("msg", "업데이트 Failure!");
+			rMap.put("url", "/board/view?biNum=" + board.get("biNum"));
+		}
+		return rMap;
 	}
 
 	@Override
 	public Map<String, String> deleteBoard(Map<String, String> board) {
-		return null;
+		Map<String, String> rMap = new HashMap<>();
+		int result = bdao.deleteBoard(board);
+		
+		if(result == 1) {
+			rMap.put("msg", "삭제 Success!");
+			rMap.put("url", "/board/list");
+		} else {
+			rMap.put("msg", "삭제 Failure!");
+			rMap.put("url", "/board/view?biNum=" + board.get("biNum"));
+		}
+		return rMap;
 	}
 
 }
