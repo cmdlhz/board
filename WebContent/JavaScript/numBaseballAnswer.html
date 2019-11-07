@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<input type="number" id="num">
+<button onclick="checkNum()">야구게임</button>
+<div id="rDiv"></div>
+<script>
+	var rNum = Math.floor(Math.random()*88)+11;
+	var rNum10 = Math.floor((rNum/10)%10);
+	var rNum1 = Math.floor((rNum/1)%10);
+	var numObj = document.getElementById("num");
+	alert(rNum);
+	function checkNum(){
+		
+		var result = 'OUT!';
+		if(rNum10 == Math.floor((numObj.value/10)%10) || rNum1 == Math.floor((numObj.value/1)%10) ){
+			result = '1 STRIKE! 1 OUT!';
+			if(rNum==numObj.value){
+				result = '2 STRIKE';
+			}
+		}else if(rNum10 == Math.floor((numObj.value/1)%10) || rNum1 == Math.floor((numObj.value/10)%10)){
+			result = '1 Ball 1 OUT!';
+			if(rNum10 == Math.floor((numObj.value/1)%10) && rNum1 == Math.floor((numObj.value/10)%10)){
+				result = '2 Ball';
+			}
+		}
+			
+		document.getElementById("rDiv").innerHTML = result;	
+		console.log(numObj);
+	}
+
+	//10의자리 구하는법	Math.floor((num/10)%10)
+	//1의자리 구하는법	Math.floor((num/1)%10)
+</script>
+</body>
+</html>

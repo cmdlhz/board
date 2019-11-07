@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>숫자 야구</title>
+</head>
+<body>
+<input type="number" id="num">
+<button onclick="checkNum()">야구 게임 2</button>
+<div id="rDiv"></div>
+<script>
+// 	var rNum = Math.floor(Math.random() * 88) + 11;
+	var rNum = 36;
+	var numObj = document.getElementById("num"); // test 해볼 것 : 36(), 53(), 35(), 63()
+	var strikeCount = 0;
+	var ballCount = 0;
+	var outCount = 0;
+	
+	function checkNum(){
+		console.log("내 10의 자리 : " + Math.floor((numObj.value/10)%10));
+		console.log("내 1의 자리 : " + Math.floor((numObj.value/1)%10));
+		
+		console.log("Random 10의 자리 : " + Math.floor((rNum/10)%10));
+		console.log("Random 1의 자리 : " + Math.floor((rNum/1)%10));
+		
+		///// 10의 자리 비교 /////
+		// Random 10의 자리 == 내 10의 자리 : Strike
+		if(Math.floor((rNum/10)%10) == Math.floor((numObj.value/10)%10)){
+			strikeCount++;
+			console.log(`[1] : Strike : ${strikeCount} + Ball : ${ballCount} + Out : ${outCount}`);
+
+		// Random 10의 자리 != 내 1의 자리 : Out
+		} else if(Math.floor((rNum/10)%10) != Math.floor((numObj.value/1)%10)){
+			outCount++;
+			console.log(`[1-2] : Strike : ${strikeCount} + Ball : ${ballCount} + Out : ${outCount}`);
+		}
+		
+	///// 10의 자리 비교 /////
+		// Random 1의 자리 == 내 1의 자리 : Strike
+		if(Math.floor((rNum/1)%10) == Math.floor((numObj.value/1)%10)){
+			strikeCount++;
+			console.log(`[2] : Strike : ${strikeCount} + Ball : ${ballCount} + Out : ${outCount}`);
+		
+		// Random 1의 자리 != 내 1의 자리 : Out
+		} else if(Math.floor((rNum/1)%10) != Math.floor((numObj.value/1)%10)){
+			outCount++;
+			console.log(`[2-3] : Strike : ${strikeCount} + Ball : ${ballCount} + Out : ${outCount}`);
+		}
+		
+		
+		// Random 10의 자리 == 내 1의 자리 : Ball
+		else if(Math.floor((rNum/10)%10) == Math.floor((numObj.value/1)%10)){
+			ballCount++;
+			console.log(`[1-2] : Strike : ${strikeCount} + Ball : ${ballCount} + Out : ${outCount}`);
+		}
+		
+		// Random 1의 자리 == 내 10의 자리 : Ball
+		else if(Math.floor((rNum/1)%10) == Math.floor((numObj.value/10)%10)){
+			ballCount++;
+			console.log(`[2-2] : Strike : ${strikeCount} + Ball : ${ballCount} + Out : ${outCount}`);
+		}
+		
+		document.getElementById("rDiv").innerHTML = `Strike : ${strikeCount} + Ball : ${ballCount} + Out : ${outCount} <br> Random # : ${rNum}`;
+	}
+</script>
+</body>
+</html>

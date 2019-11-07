@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>숫자 야구</title>
+</head>
+<body>
+<input type="number" id="num">
+<button onclick="checkNum()">야구 게임</button>
+<div id="rDiv"></div>
+<script>
+	var rNum = Math.floor(Math.random() * 9) + 1;
+	var numObj = document.getElementById("num");
+	
+	function checkNum(){
+		var result = 'OUT';
+		if(rNum == numObj.value){
+			result = 'STRIKE !';
+		}
+		document.getElementById("rDiv").innerHTML = result;
+	}
+</script>
+</body>
+</html>

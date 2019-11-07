@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="rDiv">
+	<table border="1">
+		<tr>
+			<td><button onclick="clickBtn(this)" id="btn1">Click</button></td>
+			<td><button onclick="clickBtn(this)" id="btn2">Click2</button></td>
+		</tr>
+	</table>
+</div>
+<script>
+// alert(this == window);
+// same as this.alert(this == window);
+
+function clickBtn(btn){
+// 	alert(document.getElementById('btn1').innerHTML);
+// 	alert(btn.innerHTML);
+
+// 	alert(btn.parentNode.innerHTML);
+	btn.parentNode.innerHTML = "지뢰 아님!";
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Game</title>
+</head>
+<body>
+<div id="rDiv"></div>
+<button onclick="startGame()">START</button>
+<script>
+	var rDiv = document.getElementById('rDiv');
+	var rNum;
+	function startGame(){
+		rNum = Math.floor(Math.random() * 16) + 1;
+		var html = '<table border="1">';
+		var n = 1;
+		for(var i=1; i<=4; i++){
+			html += '<tr>';
+			for(var j=1; j<=4; j++){
+				html += '<td><button onclick="clickBtn(' + (n++) + ')">지뢰 X</button></td>';
+			}
+			html += '</tr>';
+		}
+		html += '</table>';
+		rDiv.innerHTML = html;
+	}
+	function clickBtn(btnNum){
+		if(btnNum == rNum){
+			alert('BOOOOOOOOOOMB!');
+		} else {
+			console.log("위치 : " + btnNum);
+		}
+	}
+</script>
+</body>
+</html>
+
+<!-- 
+	// Java로 치면 data type : double 
+	// 0~1 사이
+ 	for(var i=1; i<=10; i++){
+ 		var rNum = Math.random();
+ 		rNum = Math.floor(rNum*16) +1;
+ 		document.write(rNum + '<br>');
+ 	}
+ -->

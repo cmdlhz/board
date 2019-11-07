@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>BINGO</title>
+</head>
+<body>
+	<table border="2">
+		<tr>
+			<td><input type="number" name="nums"></td>
+			<td><input type="number" name="nums"></td>
+			<td><input type="number" name="nums"></td>
+		</tr>
+		<tr>
+			<td><input type="number" name="nums"></td>
+			<td><input type="number" name="nums"></td>
+			<td><input type="number" name="nums"></td>
+		</tr>
+		<tr>
+			<td><input type="number" name="nums"></td>
+			<td><input type="number" name="nums"></td>
+			<td><input type="number" name="nums"></td>
+		</tr>
+		<tr>
+			<td colspan="3"><button onclick="nextBingo()">담빙고숫자</td>
+		</tr>
+	</table>
+</body>
+<script>
+	var bingoNums = [];
+	var inputs = document.getElementsByName("nums");
+	
+	function nextBingo(){
+		var rNum = Math.floor(Math.random()*9) + 1;
+		console.log("rNum : " + rNum);
+				
+		while(bingoNums.indexOf(rNum) != -1){
+			rNum = Math.floor(Math.random()*9) + 1;
+		}
+		bingoNums.push(rNum);
+		
+		console.log("bingoNums : " + bingoNums);
+		
+		for(var i=0; i<inputs.length; i++){
+			var num = inputs[i].value;
+			if(rNum == num){
+				inputs[i].parentNode.innerHTML = 'O';
+			}
+		}
+	}
+</script>
+</html>

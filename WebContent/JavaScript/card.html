@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Find SAME cards</title>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+	var arr1 = [];
+	var arr2 = [];
+	var test = 'test';
+	
+	function generateNums(array){
+
+		while(array.length != 10){
+			rNum = Math.floor(Math.random() * 10) + 1;
+			if(array.indexOf(rNum) == -1) array.push(rNum);
+		}
+		
+// 		for(var i=1; i<=10; i++){
+// 			rNum = Math.floor(Math.random() * 10) + 1;
+// // 			if(array.indexOf(rNum) == -1){
+// // 				array.push(rNum);
+// // 			} else {
+// // 				i--;
+// // 			}
+// 			array.indexOf(rNum) == -1 ? array.push(rNum) : i--;
+// 		}
+	}
+	
+	generateNums(arr1);
+	generateNums(arr2);
+	
+	console.log("arr1 : " + arr1);
+	console.log("arr2 : " + arr2);
+	
+	document.getElementById("div1").innerHTML = "arr1 : " + arr1 + "<br>arr2 : " + arr2;
+</script>
+</body>
+</html>
