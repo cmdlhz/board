@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Baseball 3</title>
+</head>
+<body>
+<input type="number" id="num">
+<div id="rDiv"></div>
+<button onclick="checkNum()">숫자야구 3자리</button>
+<script>
+	var rNum = Math.floor(Math.random()*888) + 111;
+	var input = document.getElementById("num");
+	
+	alert(rNum);
+	
+	function checkNum(){
+		var countStrike = 0;
+		var countBall = 0;
+		var countOut = 3;
+		
+		var inputArr = input.value.split('');
+		var rNumArr = rNum.toString().split('');
+		console.log("numArr : " + inputArr);
+		console.log("rNumArr : " + rNumArr);
+		
+		for(var i =0; i<inputArr.length; i++){
+			for(var j=0; j<rNumArr.length; j++){
+				if((inputArr[0] != rNumArr[j]){
+					countStrike--;
+					countBall--;
+					if((inputArr[0] == rNumArr[0]) 
+											  
+					if((inputArr[1] != rNumArr[j]){
+					 	countStrike--;
+							 
+						 if((inputArr[2] != rNumArr[j]){
+							 countStrike--;
+					 	}
+					}
+				}
+			}
+		}
+		document.getElementById("rDiv").innerHTML = `Strike : ${countStrike}, Ball : ${countStrike}, Out: ${countOut} `;
+	}
+</script>
+</body>
+</html>

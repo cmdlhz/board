@@ -14,21 +14,20 @@
 	var rNum1 = Math.floor((rNum/1)%10);
 	var numObj = document.getElementById("num");
 	alert(rNum);
-	function checkNum(){
-		
+	
+	function checkNum(){	
 		var result = 'OUT!';
 		if(rNum10 == Math.floor((numObj.value/10)%10) || rNum1 == Math.floor((numObj.value/1)%10) ){
 			result = '1 STRIKE! 1 OUT!';
 			if(rNum==numObj.value){
 				result = '2 STRIKE';
 			}
-		}else if(rNum10 == Math.floor((numObj.value/1)%10) || rNum1 == Math.floor((numObj.value/10)%10)){
+		} else if(rNum10 == Math.floor((numObj.value/1)%10) || rNum1 == Math.floor((numObj.value/10)%10)){
 			result = '1 Ball 1 OUT!';
 			if(rNum10 == Math.floor((numObj.value/1)%10) && rNum1 == Math.floor((numObj.value/10)%10)){
 				result = '2 Ball';
 			}
 		}
-			
 		document.getElementById("rDiv").innerHTML = result;	
 		console.log(numObj);
 	}
