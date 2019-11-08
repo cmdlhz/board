@@ -23,7 +23,7 @@ public class DBCon {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	};
 	
 	public static Connection getCon() {
 		Connection con = null;

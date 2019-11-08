@@ -15,7 +15,7 @@ class Human4{
 	}
 	@Override
 	public String toString() {
-		return "Human4 [age=" + age + ", height=" + height + "]";
+		return "Human2 [age=" + age + ", height=" + height + "]";
 	}
 	public int getAge() {
 		return age;
@@ -31,8 +31,18 @@ class Human4{
 	}
 }
 
-interface Com{
-	public int compare2(Object o1, Object o2);
+//공통으로 쓸 거라면 generic 사용 : T means "type".
+class Compare<T> implements Comparator<T>{
+
+	@Override
+	public int compare(T o1, T o2) {
+		Human4 h1 = (Human4)o1;
+		Human4 h2 = (Human4)o2;
+		// 숫자를 바꾸면 descending이 됨
+		if(h1.getAge() < h2.getAge()) return -1;
+		if(h1.getAge() > h2.getAge()) return 1;
+		return 0;
+	}
 }
 
 public class CollectionsHuman3 {
@@ -44,17 +54,20 @@ public class CollectionsHuman3 {
 		hList.add(new Human4(50, 187));
 		hList.add(new Human4(17, 150));
 		
-		Com c = new Com() {
-			@Override
-			public int compare2(Object o1, Object o2) {
-				Human4 h1 = (Human4)o1;
-				Human4 h2 = (Human4)o2;
-				// 숫자를 바꾸면 descending이 됨
-				if(h1.getAge() < h2.getAge()) return 1;
-				if(h1.getAge() > h2.getAge()) return -1;
-				return 0;
-			}
-		};
+	    Collections.sort(hList, new Compare<Human4>());
+	
+		
+//		Com c = new Com() {
+//			@Override
+//			public int compare2(Object o1, Object o2) {
+//				Human4 h1 = (Human4)o1;
+//				Human4 h2 = (Human4)o2;
+//				// 숫자를 바꾸면 descending이 됨
+//				if(h1.getAge() < h2.getAge()) return 1;
+//				if(h1.getAge() > h2.getAge()) return -1;
+//				return 0;
+//			}
+//		};
 		
 		for(int i=0; i<hList.size(); i++) {
 			System.out.println("나이로 sort : " + hList.get(i));
