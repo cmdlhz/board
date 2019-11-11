@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Array</title>
+</head>
+<body>
+
+<script>
+var arr = new Array();
+arr.push(1);
+
+var arr2 = [];
+arr2.push(2);
+
+console.log("arr : " + arr);
+console.log("arr2 : " + arr2);
+
+//없던 키값을 만들어 냄
+var json = {};
+json.name = 'Jen';
+json['age'] = 30;
+
+console.log(json);
+
+var json2 = {
+	'country' : 'Korea',
+	'color' : 'green'
+}
+console.log(json2);
+
+var arrList = [];
+arrList.push(json);
+arrList.push(json2);
+console.log(arrList);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="rDiv"></div>
+<script>
+window.onload = function(){
+	var json2 = {
+		'country' : 'Korea',
+		'color' : 'green'
+	}
+	console.log(json2);
+
+	var html = '<table border="1">';
+	html += '<tr>';
+	html += '<th>이름</th><th>나이</th>';
+	html += '</tr>';
+	for(var i=0; i<json2.length;i++){
+		var human = json2[i];
+		html += '<tr>';
+		html += '<td>' + human.country + '</td><td>' + human.color + '</td>';
+		html += '</tr>';
+	}
+	html += '</table>';
+	document.getElementById('rDiv').innerHTML = html;
+}
+</script>
+</body>
+</html>

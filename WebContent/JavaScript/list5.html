@@ -2,20 +2,43 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>List</title>
 </head>
 <body>
+<div id="rDiv"></div>
 <script>
 window.onload = function(){
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET'. '/list');
+	xhr.open('GET', '/list');
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4 && xhr.status == 200){
-			document.getElementById("rDiv").innerHTML = xhr.responseText;
+			var list = JSON.parse(xhr.responseText);
+			var html = '<table border="1">';
+			html += '<tr><th>이름</th><th>나이</th></tr>';
+			for(var i=0; i<list.length;i++){
+				html += '<tr><td>' + list[i].name + '</td><td>' + list[i].age + '</td></tr>';
+			}
+			html += '</table>';
+			document.getElementById("rDiv").innerHTML = html;
 		}
 	}
 	xhr.send();
 }
+
+// var str = '{"name": "kim"}';
+// document.write(str + '<br>');
+
+// var h = JSON.parse(str);
+// document.write(h + '<br>' );
+// document.write(h.name);
+
+// console.log(str);
+// console.log(h);
+
+// object를 JSON 형태의 String으로 변경
+// var str = JSON.stringify(hArr);
+// JSON 형태의 String 구조에서 object로 변경
+// var hrr2 = JSON.parse(str);
 </script>
 </body>
 </html>

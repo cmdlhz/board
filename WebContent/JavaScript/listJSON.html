@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Board</title>
+</head>
+<body>
+<div id="rDiv"></div>
+<script>
+window.onload = function(){
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', '/list');
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			var list = JSON.parse(xhr.responseText);
+			var html = '<table border="2">';
+			html += '<tr><th>번호</th><th>제목</th><th>작성자</th><th>작성 일자</th><th>게시 시간</th><th>수정 일자</th><th>수정 시간</th></tr>';
+			for(var i=0; i<list.length;i++){
+				html += '<tr><td>' + list[i].biNum + '</td><td>' + list[i].biTitle + '</td><td>' + list[i].uiId + '</td><td>' + list[i].credat + '</td><td>' + list[i].cretim + '</td><td>' + list[i].moddat + '</td><td>' + list[i].modtim + '</td></tr>';
+			}
+			html += '</table>';
+			document.getElementById("rDiv").innerHTML = html;
+		}
+	}
+	xhr.send();
+}
+</script>
+</body>
+</html>

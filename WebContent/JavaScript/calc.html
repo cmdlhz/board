@@ -23,7 +23,17 @@ function doCalc(){
 	var num1 = document.getElementById('num1').value;
 	var num2 = document.getElementById('num2').value;
 	var op = document.getElementById('op').value;
-	var url = '/calc?num1=' + num1 + '&num2=' + num2 + '&op=' + encodeURIComponent(op);
+	var json = {
+		firstNum : num1,
+		secondNum : num2,
+		op : op
+	}
+// 	console.log(json);
+	
+// 	var url = '/calc?num1=' + num1 + '&num2=' + num2 + '&op=' + encodeURIComponent(op);
+	
+	var jsonStr = JSON.stringify(json);
+	var url = '/calc?json=' + encodeURIComponent(jsonStr);
 	
 	xhr.open('GET', url);
 	xhr.onreadystatechange = function(e){

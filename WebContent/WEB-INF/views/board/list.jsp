@@ -49,6 +49,7 @@ if(user == null){
 			<td>${board.moddat}</td>
 			<td>${board.modtim}</td>
 		</tr>
+<!-- 	<tbody id="tbody"></tbody> -->
 	</c:forEach>
 	</table>
 	<br><button onclick="goPage('/views/board/insert')">*** 글쓰기 ***</button><br>
@@ -60,6 +61,30 @@ if(user == null){
 function goPage(url){
 	 location.href = url;
 }
+
+// window.onload = function(){
+// 	var xhr = new XMLHttpRequest();
+// 	xhr.open('GET', '/board/list');
+// 	xhr.onreadystatechange = function(){
+// 		if(xhr.readyState == 4 && xhr.status == 200){
+// 			var list = JSON.parse(xhr.responseText);
+// 			var html = '';
+// 			for(var i=0; i<list.length;i++){
+// 				html += '<tr>';
+//				html += '<td>' + list[i].biNum + '</td>';
+//				html += '<td>' + list[i].biTitle + '</td>';
+//				html += '<td>' + list[i].uiId + '</td>';
+//				html += '<td>' + list[i].credat + '</td>';
+//				html += '<td>' + list[i].cretim + '</td>';
+//				html += '<td>' + list[i].moddat + '</td>';
+//				html += '<td>' + list[i].modtim + '</td>';
+//				html += '</tr>';
+// 			}
+// 			document.getElementById("tBody").innerHTML = html;
+// 		}
+// 	}
+// 	xhr.send();
+// }
 </script>
 </body>
 </html>

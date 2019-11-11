@@ -1,7 +1,6 @@
 package com.board.bdi.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.board.bdi.service.BoardService;
 import com.board.bdi.service.impl.BoardServiceImpl;
+import com.google.gson.Gson;
 
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,6 +29,10 @@ public class BoardController extends HttpServlet {
 		if("list".equals(cmd)) {
 			List<Map<String, String>> list = bs.getBoardList(board);
 			request.setAttribute("list", list);
+//			Gson gson = new Gson();
+			// 이게 맞는데 일단은 "text/html;charset=utf-8"
+//			response.setContentType("application/json");
+//			response.getWriter().println(gson.toJson(list));
 		} else if("view".equals(cmd)) {
 			path = "/views/board/view";
 			board.put("biNum", request.getParameter("biNum"));
