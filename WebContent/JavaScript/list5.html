@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+window.onload = function(){
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET'. '/list');
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			document.getElementById("rDiv").innerHTML = xhr.responseText;
+		}
+	}
+	xhr.send();
+}
+</script>
+</body>
+</html>

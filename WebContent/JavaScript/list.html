@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- div보다 아래에 있어야 됨 : div가 rendering이 되야 하므로 -->
+<script>
+function test(){
+	var rDiv = document.getElementById("rDiv");
+	rDiv.innerHTML = "ahhhhh";	
+}
+</script>
+<div id="rDiv"></div>
+<!-- 실행 시점이 script보다 밑에 있으면 괜춘 -->
+<button onclick="test()">CLICK</button>
+</body>
+</html>
