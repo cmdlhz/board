@@ -29,5 +29,12 @@ if(user == null){
 <%
 }
 %>
+
+<!-- 
+parameter를 보내면 여기서 보낼 수 있음
+<%-- <%= request.getParameter("name") %> --%>
+same as
+${param.name}
+ -->
 </body>
 </html>
